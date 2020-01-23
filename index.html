@@ -12,7 +12,10 @@
         <h1>test</h1>
         <button onclick="onClick()">test</button>
         <script>
-            function onClick() {
+
+
+
+            document.addEventListener('DOMContentLoaded', function (event) {
                 console.log("test");
                 // feature detect
                 if (typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -26,7 +29,8 @@
                 } else {
                     // handle regular non iOS 13+ devices
                 }
-            }
+            })
+
 
         </script>
     </body>
