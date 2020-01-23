@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>balancerider test</title>
+    </head>
+
+    <body>
+        <li id="xas">100</li>
+        <li id="yas">100</li>
+
+        <script>
+
+            window.addEventListener("deviceorientation", handleOrientation, true);
+            function handleOrientation(event) {
+                var absolute = event.absolute;
+                var alpha = event.alpha;
+                var beta = event.beta;
+                var gamma = event.gamma;
+                // Do stuff with the new orientation data
+
+                document.getElementById("xas").innerText = alpha;
+                document.getElementById("yas").innerText = beta;
+
+                console.log(absolute);
+                console.log(alpha);
+                console.log(beta);
+
+
+            }
+
+        </script>
+    </body>
+
+</html>
