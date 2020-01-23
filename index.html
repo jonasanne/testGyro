@@ -10,25 +10,41 @@
 
     <body>
         <h1>new test</h1>
+        <button onclick="Test()">permission pls bitch</button>
+        <li id="x"></li>
+        <li id="z"></li>
+        <li></li>
         <script>
 
 
 
-            document.addEventListener('DOMContentLoaded', function (event) {
+            function Test() {
                 console.log("test");
                 // feature detect
                 if (typeof DeviceOrientationEvent.requestPermission === 'function') {
                     DeviceOrientationEvent.requestPermission()
                         .then(permissionState => {
                             if (permissionState === 'granted') {
-                                window.addEventListener('deviceorientation', () => { });
+                                let accelerometer = new Accelerometer({ frequency: 60 });
+
+                                accelerometer.addEventListener('reading', e => {
+                                    console.log("Acceleration along the X-axis " + accelerometer.x);
+                                    document.getElementById("x").innerHTML = accelerometer.x;
+
+                                    console.log("Acceleration along the Y-axis " + accelerometer.y);
+                                    document.getElementById("y").innerHTML = accelerometer.y;
+
+                                    console.log("Acceleration along the Z-axis " + accelerometer.z);
+                                    console.dir(accelerometer);
+                                });
+                                accelerometer.start();
                             }
                         })
                         .catch(console.error);
                 } else {
                     // handle regular non iOS 13+ devices
                 }
-            })
+            };
 
 
         </script>
