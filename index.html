@@ -14,23 +14,26 @@
 
         <script>
 
-            window.addEventListener("deviceorientation", handleOrientation, true);
-            function handleOrientation(event) {
-                var absolute = event.absolute;
-                var alpha = event.alpha;
-                var beta = event.beta;
-                var gamma = event.gamma;
-                // Do stuff with the new orientation data
 
-                document.getElementById("xas").innerText = alpha;
-                document.getElementById("yas").innerText = beta;
-
-                console.log(absolute);
-                console.log(alpha);
-                console.log(beta);
+            // Do stuff with the new orientation data
 
 
-            }
+
+
+
+            let gyroscope = new Gyroscope();
+            gyroscope.addEventListener('reading', e => rotationHandler({
+                alpha: gyroscope.x,
+                beta: gyroscope.y,
+                gamma: gyroscope.z
+            }));
+            gyroscope.start();
+
+            console.dir(gyroscope.);
+
+            document.getElementById("xas").innerText = gyroscope.x;
+            document.getElementById("yas").innerText = gyroscope.y;
+
 
         </script>
     </body>
